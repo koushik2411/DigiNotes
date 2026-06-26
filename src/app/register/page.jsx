@@ -64,10 +64,10 @@ function Register() {
                 setIsOpen={setIsOpen}
             />
 
-            <div className={` w-11/12 md:w-10/12 p-3 rounded-lg bg-slate-100 text-slate-800`}>
+            <div className={` w-11/12 md:w-10/12 max-w-260 p-3 md:p-6 lg:p-9 flex flex-col lg:flex-row gap-3 rounded-lg bg-linear-to-b from-slate-200 to-slate-300 text-slate-800 lg:items-center lg:justify-center shadow-xl`}>
 
                 {/* Icon div */}
-                <div className=" w-full mb-7 text-9xl flex justify-center items-center text-slate-800">
+                <div className=" w-full mb-7 text-9xl lg:text-[180px] flex justify-center items-center text-slate-800">
                     <FaBookReader/>
                 </div>
 
@@ -114,7 +114,7 @@ function Register() {
 
                     </form>
 
-                    <div className=" mt-5 self-center">
+                    <div className=" mt-5 self-center text-sm">
 
                         <p>
                             Already registered? <Link href="/login" className=" text-blue-500 border-b">Login</Link>
