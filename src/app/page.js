@@ -174,6 +174,18 @@ function Home({ openEditModal }) {
           
           {loading ? (
             <Loader/>
+          ) : filteredNotes.length === 0 ? (
+            <div className=" pt-50 flex flex-col items-center justify-center gap-3">
+
+              <h2 className=" text-xl font-semibold">
+                No notes found
+              </h2>
+
+              <p className=" text-slate-500">
+                Create your first note.
+              </p>
+
+            </div>
           ) : (
             <NotesGrid
               color={color}

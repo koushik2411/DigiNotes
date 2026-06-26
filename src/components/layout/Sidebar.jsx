@@ -45,7 +45,7 @@ function Sidebar({ isOpen, setIsOpen, notesCount, theme, themeToggle }) {
                       exit={{ x: 300 }}
                       transition={{ duration: 0.4 }}
                       onClick={(e) => e.stopPropagation()}
-                      className={` h-[90vh] w-70 p-3 flex flex-col gap-3 fixed right-3 top-12 ${theme === "light" ? "bg-slate-100 text-slate-800" : "bg-slate-800 text-slate-100"} rounded-xl shadow-lg`}
+                      className={` w-72 p-3 flex flex-col gap-3 fixed right-3 top-12 ${theme === "light" ? "bg-slate-100 text-slate-800" : "bg-slate-800 text-slate-100"} rounded-xl shadow-lg`}
                     >
 
                         {/* User details div */}
@@ -74,7 +74,7 @@ function Sidebar({ isOpen, setIsOpen, notesCount, theme, themeToggle }) {
                         <div className=" h-0.5 w-[96%] bg-slate-400 self-center rounded-2xl"></div>
 
                         {/* Buttons list */}
-                        <div className=" mt-5 flex flex-col gap-3">
+                        <div className=" flex flex-col gap-3">
 
                             <button className={` w-full p-3 text-center rounded ${theme === "light" ? "bg-slate-300/40 text-slate-800" : "bg-slate-900/30 text-slate-100"}`}>Edit username</button>
 
@@ -87,11 +87,11 @@ function Sidebar({ isOpen, setIsOpen, notesCount, theme, themeToggle }) {
                                 Appearance {theme === "dark" ? <FaSun/> : <FaMoon/>}
                             </button>
 
-                            <div className={` h-0.5 w-[96%] mt-5 bg-slate-400 self-center rounded-2xl`}></div>
+                            <div className={` h-0.5 w-[96%] bg-slate-400 self-center rounded-2xl`}></div>
 
                             <button
                               onClick={logout}
-                              className={` w-full mt-5 p-3 text-red-500 text-center rounded ${theme === "light" ? "bg-slate-300/40" : "bg-slate-900/40"}`}
+                              className={` w-full mt-3 p-3 text-red-500 text-center rounded ${theme === "light" ? "bg-slate-300/40" : "bg-slate-900/40"}`}
                             >
                                 Logout
                             </button>
