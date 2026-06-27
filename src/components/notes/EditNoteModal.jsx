@@ -13,11 +13,11 @@ function EditNoteModal({ selectedNote, setSelectedNote, fetchNotes, theme }) {
 
     // Length color
     useEffect(()=> {
-        if (title.length > 0 && title.length <=74) {
+        if (title.length > 0 && title.length <=20) {
             setLengthColor("#16a34a");
-        } else if (title.length >=75 && title.length <= 90) {
+        } else if (title.length >=21 && title.length <= 29) {
             setLengthColor("#ea580c");
-        } else if (title.length >=91) {
+        } else if (title.length >=30) {
             setLengthColor("#ff0000");
         } else {
             setLengthColor("#111111");
@@ -81,12 +81,12 @@ function EditNoteModal({ selectedNote, setSelectedNote, fetchNotes, theme }) {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder="Add Title"
-                        maxLength={100}
+                        maxLength={35}
                         className={` w-full p-2 pr-7.5 font-semibold outline-0 rounded ${theme === "light" ? "bg-slate-50 text-slate-800" : "bg-slate-800 text-slate-100"}`}
                     />
 
                     <p 
-                      className={` absolute right-1.5 top-3.5 text-xs z-10 rounded ${title.length === 100 ? " font-semibold animate-bounce text-red-600" : ""}`}
+                      className={` absolute right-1.5 top-3.5 text-xs z-10 rounded ${title.length === 35 ? " font-semibold animate-bounce text-red-600" : ""}`}
                       style={{ color: lengthColor}}
                     >
                         {title.length}

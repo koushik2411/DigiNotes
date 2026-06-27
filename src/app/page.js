@@ -5,10 +5,10 @@ import Sidebar from "@/components/layout/Sidebar";
 import AddNoteModal from "@/components/notes/AddNoteModal";
 import EditNoteModal from "@/components/notes/EditNoteModal";
 import NotesGrid from "@/components/notes/NotesGrid";
-import SearchBar from "@/components/notes/SearchBar";
 import Loader from "@/components/ui/Loader";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { FaPenToSquare } from "react-icons/fa6";
 import { LuNotebookPen } from "react-icons/lu";
 import { toast } from "sonner";
 
@@ -120,11 +120,12 @@ function Home({ openEditModal }) {
   },[]);
 
   return (
-    <div className={` w-full min-h-screen p-3 flex flex-col gap-3 ${theme === "light" ? "bg-slate-100 text-slate-800" : "bg-slate-800 text-slate-100"}`}>
+    <div className={` w-full min-h-screen p-3 flex flex-col gap-3 ${theme === "light" ? "bg-linear-to-b from-slate-100 to-slate-200 text-slate-900" : "bg-linear-to-b from-slate-900 to-indigo-950 text-slate-100"}`}>
 
       <Header 
         isOpen={isOpen}
         setIsOpen={setIsOpen}
+        setSearchText={setSearchText}
         theme={theme}
       />
 
@@ -138,26 +139,11 @@ function Home({ openEditModal }) {
           themeToggle={themeToggle}
         />
       </aside>
-      
-      {/* -------------------------------------- */}
-        {/* Search Bar */}
-        <div className=" w-10/12 max-w-420 mt-10 my-3 p-1 rounded-lg self-center">
 
-          <SearchBar 
-            searchText={searchText}
-            setSearchText={setSearchText}
-            theme={theme}
-          />
-        </div>
-
-      {/* -------------------------------------- */}
-
-      {/* Separator */}
-      <div className=" h-1 w-[96vw] max-w-420 bg-slate-400 self-center rounded-2xl"></div>
       {/* -------------------------------------- */}
 
       {/* Notes Grid with heading */}
-      <section className=" w-full max-w-420 flex flex-col justify-center self-center">
+      <section className=" w-full max-w-420 mt-7 flex flex-col justify-center self-center">
 
         <div className=" mb-3 p-1 text-lg flex items-center gap-3 border-b">
 
@@ -206,9 +192,9 @@ function Home({ openEditModal }) {
       {/* Add Note Button */}
       <button
         onClick={() => setIsModalOpen(true)}
-        className=" h-12 w-32 py-2 px-4 fixed bottom-10 right-6 rounded-lg bg-blue-500 text-slate-50 shadow-lg z-0"
+        className=" h-12 w-32 py-2 px-4 flex items-center justify-center gap-2 fixed bottom-10 right-6 rounded-lg bg-linear-to-b from-blue-400 to-indigo-700 text-slate-50 shadow-lg z-0"
       >
-        Add Note
+        Add Note <FaPenToSquare/>
       </button>
       {/* -------------------------------------- */}
 

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { MdLogout } from "react-icons/md";
 import { toast } from "sonner";
 
 function Sidebar({ isOpen, setIsOpen, notesCount, theme, themeToggle }) {
@@ -36,7 +37,7 @@ function Sidebar({ isOpen, setIsOpen, notesCount, theme, themeToggle }) {
                 <motion.div    
                   animate={{ x: isOpen ? 0 : 300}}
                   onClick={() => setIsOpen(false)} 
-                  className="overlay fixed inset-0 bg-black/60 z-20"
+                  className="overlay fixed inset-0 bg-black/70 z-20"
                 >
 
                     <motion.div 
@@ -45,11 +46,11 @@ function Sidebar({ isOpen, setIsOpen, notesCount, theme, themeToggle }) {
                       exit={{ x: 300 }}
                       transition={{ duration: 0.4 }}
                       onClick={(e) => e.stopPropagation()}
-                      className={` w-72 p-3 flex flex-col gap-3 fixed right-3 top-12 ${theme === "light" ? "bg-slate-100 text-slate-800" : "bg-slate-800 text-slate-100"} rounded-xl shadow-lg`}
+                      className={` w-72 p-3 flex flex-col gap-3 fixed right-3 top-12 ${theme === "light" ? "bg-slate-100 text-slate-800" : "bg-slate-900 text-slate-100"} rounded-xl shadow-lg`}
                     >
 
                         {/* User details div */}
-                        <div className={` p-9 flex flex-col justify-center items-center gap-3 rounded-xl ${theme === "light" ? "bg-slate-300 text-slate-800" : "bg-slate-900 text-slate-100"}`}>
+                        <div className={` p-9 flex flex-col justify-center items-center gap-3 rounded-xl ${theme === "light" ? "bg-linear-to-b from-slate-200 to-slate-300 text-slate-800" : "bg-linear-to-b from-slate-950 to-indigo-950 text-slate-100"}`}>
 
                             <h1 className=" h-24 w-24 p-2 rounded-full bg-gray-500 text-white flex items-center justify-center text-center font-semibold text-4xl">
                                 {user.name.charAt(0)}
@@ -67,7 +68,7 @@ function Sidebar({ isOpen, setIsOpen, notesCount, theme, themeToggle }) {
                         <div className=" h-0.5 w-[96%] bg-slate-400 self-center rounded-2xl"></div>
 
                         {/* Notes count */}
-                        <div className={` w-full p-3 text-center rounded`}>
+                        <div className={` w-full p-3 text-center rounded ${theme === "light" ? "bg-linear-to-b from-slate-100 to-slate-200 text-slate-800" : "bg-linear-to-b from-slate-900 to-indigo-950/90 text-slate-100"}`}>
                             Total Notes: <span className=" text-blue-500 font-semibold">{notesCount}</span>
                         </div>
 
@@ -76,13 +77,13 @@ function Sidebar({ isOpen, setIsOpen, notesCount, theme, themeToggle }) {
                         {/* Buttons list */}
                         <div className=" flex flex-col gap-3">
 
-                            <button className={` w-full p-3 text-center rounded ${theme === "light" ? "bg-slate-300/40 text-slate-800" : "bg-slate-900/30 text-slate-100"}`}>Edit username</button>
+                            <button className={` w-full p-3 text-center rounded-lg ${theme === "light" ? "bg-linear-to-b from-slate-100 to-slate-200 text-slate-800" : "bg-linear-to-b from-slate-900 to-indigo-950/90 text-slate-100"}`}>Edit username</button>
 
-                            <button className={` w-full p-3 text-center rounded ${theme === "light" ? "bg-slate-300/40 text-slate-800" : "bg-slate-900/30 text-slate-100"}`}>Reset Password</button>
+                            <button className={` w-full p-3 text-center rounded-lg ${theme === "light" ? "bg-linear-to-b from-slate-100 to-slate-200 text-slate-800" : "bg-linear-to-b from-slate-900 to-indigo-950/90 text-slate-100"}`}>Reset Password</button>
 
                             <button 
                               onClick={themeToggle}
-                              className={` w-full p-3 flex items-center gap-2 justify-center rounded ${theme === "light" ? "bg-slate-300/40 text-slate-800" : "bg-slate-900/30 text-slate-100"}`}
+                              className={` w-full p-3 flex items-center gap-2 justify-center rounded-lg ${theme === "light" ? "bg-linear-to-b from-slate-100 to-slate-200 text-slate-800" : "bg-linear-to-b from-slate-900 to-indigo-950/90 text-slate-100"}`}
                             >
                                 Appearance {theme === "dark" ? <FaSun/> : <FaMoon/>}
                             </button>
@@ -91,9 +92,9 @@ function Sidebar({ isOpen, setIsOpen, notesCount, theme, themeToggle }) {
 
                             <button
                               onClick={logout}
-                              className={` w-full mt-3 p-3 text-red-500 text-center rounded ${theme === "light" ? "bg-slate-300/40" : "bg-slate-900/40"}`}
+                              className={` w-full mt-3 p-3 flex items-center gap-2 text-red-500 font-semibold text-center justify-center rounded-lg ${theme === "light" ? "bg-linear-to-b from-slate-100 to-slate-200" : "bg-linear-to-b from-slate-900 to-indigo-950/90"}`}
                             >
-                                Logout
+                                Logout <MdLogout/>
                             </button>
 
                         </div>

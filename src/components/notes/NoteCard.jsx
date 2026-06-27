@@ -42,14 +42,14 @@ function NoteCard({ note, id, setSelectedNote, fetchNotes }) {
         <motion.div
             initial={{ opacity: 0, y: 50}}
             whileInView={{ opacity: 1, y: 0}}
-            whileHover={{ scale: 1.02, boxShadow: "0 4px 16px #777" }}
-            transition={{ duration: 0.35, ease: "easeInOut"}}
+            whileHover={{ scale: 1.025, boxShadow: "0 4px 16px #777" }}
+            transition={{ duration: 0.30, ease: "easeInOut"}}
             key={id}
             className=" p-3 flex flex-col justify-between gap-3 rounded-lg shadow text-slate-800"
             style={{ backgroundColor: note.color}}
         >
             {/* Content */}
-            <div className=" h-42 md:h-45 lg:h-55 p-1.5 border border-slate-300 rounded overflow-hidden">
+            <div className=" h-45 md:h-51 lg:h-56 p-1.5 border border-slate-600 rounded overflow-hidden">
                 <p className=" text-sm">
                     {note.content}
                 </p>
@@ -57,7 +57,7 @@ function NoteCard({ note, id, setSelectedNote, fetchNotes }) {
 
             {/* Details Div */}
             <div className=" flex flex-col gap-1">
-                <h1 className=" max-w-full overflow-hidden font-semibold text-lg">
+                <h1 className=" max-w-full overflow-hidden font-semibold">
                     {note.title}
                 </h1>
 
