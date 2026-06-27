@@ -7,7 +7,7 @@ import { FaMoon, FaSun } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 import { toast } from "sonner";
 
-function Sidebar({ isOpen, setIsOpen, notesCount, theme, themeToggle }) {
+function Sidebar({ isOpen, setIsOpen, notesCount, theme, themeToggle, setIsEditProfileOpen }) {
 
     const [user, setUser] = useState(null);
 
@@ -21,12 +21,48 @@ function Sidebar({ isOpen, setIsOpen, notesCount, theme, themeToggle }) {
         }
     }, []);
 
+    // Edit Username
+    const editUserName = async ()=> {
+        try {
+            const token = localStorage.getItem("token");
+
+            const res = await fetch("/api/user/profile", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(
+                    { name, }
+                ),
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                toast.error(data.message);
+                return;
+            }
+
+            localStorage.setItem("user", JSON.stringify(data.user));
+
+            setUser(data.user);
+
+            toast.success(data.message);
+
+            setIsEditProfileOpen(false);
+        } catch (error) {
+            console.error(error);
+            toast.error("Failed to update profile")
+        }
+    };
+
     // Logout
     const logout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
 
-        router.push("/login");
+        router.replace("/login");
 
         toast.success("User Logged Out")
     };
@@ -77,9 +113,18 @@ function Sidebar({ isOpen, setIsOpen, notesCount, theme, themeToggle }) {
                         {/* Buttons list */}
                         <div className=" flex flex-col gap-3">
 
-                            <button className={` w-full p-3 text-center rounded-lg ${theme === "light" ? "bg-linear-to-b from-slate-100 to-slate-200 text-slate-800" : "bg-linear-to-b from-slate-900 to-indigo-950/90 text-slate-100"}`}>Edit username</button>
+                            <button
+                              onClick={() => setIsEditProfileOpen(true)} 
+                              className={` w-full p-3 text-center rounded-lg ${theme === "light" ? "bg-linear-to-b from-slate-100 to-slate-200 text-slate-800" : "bg-linear-to-b from-slate-900 to-indigo-950/90 text-slate-100"}`}
+                            >
+                                Edit username
+                            </button>
 
-                            <button className={` w-full p-3 text-center rounded-lg ${theme === "light" ? "bg-linear-to-b from-slate-100 to-slate-200 text-slate-800" : "bg-linear-to-b from-slate-900 to-indigo-950/90 text-slate-100"}`}>Reset Password</button>
+                            <button 
+                              className={` w-full p-3 text-center rounded-lg ${theme === "light" ? "bg-linear-to-b from-slate-100 to-slate-200 text-slate-800" : "bg-linear-to-b from-slate-900 to-indigo-950/90 text-slate-100"}`}
+                            >
+                                Reset Password
+                            </button>
 
                             <button 
                               onClick={themeToggle}

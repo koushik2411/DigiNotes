@@ -3,7 +3,7 @@
 import Header from "@/components/layout/Header";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaUserShield } from "react-icons/fa";
 import { toast } from "sonner";
 
@@ -20,6 +20,12 @@ function Login() {
         e.preventDefault();
 
         try {
+
+            if (!email || !password) {
+                toast.warning("Please fill all the fields");
+                return;
+            }
+            
             const res = await fetch("/api/auth/login", {
                 method: "POST",
                 headers: {
@@ -32,11 +38,6 @@ function Login() {
                     }
                 ),
             });
-
-            if (!email || !password) {
-                toast.warning("Please fill all the fields");
-                return;
-            }
 
             const data = await res.json();
 
@@ -51,11 +52,19 @@ function Login() {
 
             localStorage.setItem("user", JSON.stringify(data.user));
 
-            router.push("/");
+            router.replace("/");
         } catch (error) {
             console.error(error);
         }
     };
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            router.replace("/");
+        }
+    }, []);
 
     return (
         <div className={` w-full min-h-screen p-3 flex justify-center items-center gap-3 bg-slate-100`}>

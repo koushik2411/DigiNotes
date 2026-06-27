@@ -5,6 +5,7 @@ import Sidebar from "@/components/layout/Sidebar";
 import AddNoteModal from "@/components/notes/AddNoteModal";
 import EditNoteModal from "@/components/notes/EditNoteModal";
 import NotesGrid from "@/components/notes/NotesGrid";
+import EditProfileModal from "@/components/profile/EditProfileModal";
 import Loader from "@/components/ui/Loader";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -40,6 +41,9 @@ function Home({ openEditModal }) {
 
   // Loader
   const [loading, setLoading] = useState(true);
+
+  // Username Edit Modal
+  const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
 
   // Filtered Notes
   const filteredNotes = notes.filter((note) => note.title.toLowerCase().includes(searchText.toLowerCase()));
@@ -115,7 +119,7 @@ function Home({ openEditModal }) {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      router.push("/login");
+      router.replace("/login");
     }
   },[]);
 
@@ -137,6 +141,7 @@ function Home({ openEditModal }) {
           notesCount={filteredNotes.length}
           theme={theme}
           themeToggle={themeToggle}
+          setIsEditProfileOpen={setIsEditProfileOpen}
         />
       </aside>
 
@@ -192,7 +197,7 @@ function Home({ openEditModal }) {
       {/* Add Note Button */}
       <button
         onClick={() => setIsModalOpen(true)}
-        className=" h-12 w-32 py-2 px-4 flex items-center justify-center gap-2 fixed bottom-10 right-6 rounded-lg bg-linear-to-b from-blue-400 to-indigo-700 text-slate-50 shadow-lg z-0"
+        className=" h-12 w-32 py-2 px-4 flex items-center justify-center gap-2 fixed bottom-10 right-6 rounded-lg bg-linear-to-b from-blue-400 to-indigo-600 text-slate-50 shadow-lg z-0"
       >
         Add Note <FaPenToSquare/>
       </button>
@@ -219,6 +224,16 @@ function Home({ openEditModal }) {
           setNotes={setNotes}
           fetchNotes={fetchNotes}
           theme={theme}
+        />
+      )}
+
+      {/* Edit Username Modal */}
+      { isEditProfileOpen && (
+        <EditProfileModal
+          user={user}
+          setUser={setUser}
+          theme={theme}
+          setIsEditProfileOpen={setIsEditProfileOpen}
         />
       )}
       
