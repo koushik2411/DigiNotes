@@ -121,6 +121,7 @@ function Sidebar({ isOpen, setIsOpen, notesCount, theme, themeToggle, setIsEditP
                             </button>
 
                             <button 
+                              onClick={() => alert("Currently unavailable")}
                               className={` w-full p-3 text-center rounded-lg ${theme === "light" ? "bg-linear-to-b from-slate-100 to-slate-200 text-slate-800" : "bg-linear-to-b from-slate-900 to-indigo-950/90 text-slate-100"}`}
                             >
                                 Reset Password

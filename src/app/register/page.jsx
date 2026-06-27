@@ -67,7 +67,7 @@ function Register() {
             <div className={` w-11/12 md:w-10/12 max-w-260 p-3 md:p-6 lg:p-9 flex flex-col lg:flex-row gap-3 rounded-lg bg-linear-to-b from-slate-200 to-slate-300 text-slate-800 lg:items-center lg:justify-center shadow-xl`}>
 
                 {/* Icon div */}
-                <div className=" w-full mb-7 text-9xl lg:text-[180px] flex justify-center items-center text-slate-800">
+                <div className=" w-full mb-7 text-9xl lg:text-[180px] flex justify-center items-center text-indigo-950">
                     <FaBookReader/>
                 </div>
 
@@ -107,7 +107,7 @@ function Register() {
 
                         <button
                           type="submit"
-                          className={` p-2 rounded bg-linear-to-b from-slate-700 to-slate-900 text-slate-50`}
+                          className={` p-2 rounded bg-linear-to-b from-slate-900 to-indigo-900 text-slate-50`}
                         >
                             Register
                         </button>

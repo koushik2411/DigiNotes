@@ -114,7 +114,7 @@ function Home({ openEditModal }) {
     localStorage.setItem("theme", theme);
   },[theme]);
 
-  // Token for login
+  // Token
   useEffect(() => {
     const token = localStorage.getItem("token");
 
