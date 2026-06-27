@@ -23,7 +23,7 @@ function Header({ setIsOpen, theme, searchText, setSearchText }) {
             {/* SIDEBAR BUTTON */}
             <button
                 onClick={() => setIsOpen(prev => !prev)}
-                className=" p-2 cursor-pointer border-2 rounded-lg"
+                className=" p-2 cursor-pointer border rounded-lg"
             >
                 <FaBars/>
             </button>

@@ -9,7 +9,7 @@ function SearchBar({ searchText, setSearchText, theme}) {
                 placeholder="Search notes by title"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
-                className={` border-2 w-full px-2 py-1 rounded-lg outline-0 ${theme === "dark" ? " placeholder:text-slate-400" : ""}`}
+                className={` border w-full px-2 py-1 rounded-lg outline-0 ${theme === "dark" ? " placeholder:text-slate-400" : ""}`}
             />
         </div>
     )
